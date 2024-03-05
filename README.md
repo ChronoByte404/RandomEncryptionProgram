@@ -56,3 +56,4 @@ python3 encryption_program.py decrypt my_key
 ## Notes
 - Make sure to keep your encryption key secure.
 - Always remember to back up your files before encryption.
+- Save your generated key (placed in the keys folder) to an EXTREMELY safe space. Once it's lost, it will be unrecoverable for the next 256 billion years or so.
