@@ -38,19 +38,19 @@ Replace `[key_name]` with the name of the key (without the `.key` extension).
 ### Generate a New Key
 
 ```bash
-python3 encryption_program.py newkey my_key
+python3 main.py newkey my_key
 ```
 
 ### Encrypt Files
 
 ```bash
-python3 encryption_program.py encrypt my_key
+python3 main.py encrypt my_key
 ```
 
 ### Decrypt Files
 
 ```bash
-python3 encryption_program.py decrypt my_key
+python3 main.py decrypt my_key
 ```
 
 ## Notes
