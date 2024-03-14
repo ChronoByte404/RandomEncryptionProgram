@@ -1,19 +1,24 @@
 import random
 import os
-import sys
 
 class REP:
     def __init__(self):
         self.length = 256
 
-    def create_new_key(self, key_name):
-        new_key = ''.join([str(random.randint(0, 9)) for _ in range(self.length)])
+    def create_new_key(self):
+        key_name = input("Enter the name for the key: ")
+        multiplier = int(input("Enter the multiplier: "))
+        
+        ascii_values = [ord(char) for char in key_name]
+        multiplied_values = [value * multiplier for value in ascii_values]
+        new_key = ''.join([str(value % 10) for value in multiplied_values])  # Ensure each digit is within 0-9
         print(f"Finished key: {new_key}")
         
         with open(f"./keys/{key_name}.key", "w+") as file:
             file.write(new_key)
 
-    def encrypt_key(self, key_name):
+    def encrypt_key(self):
+        key_name = input("Enter the name of the key: ")
         print("Place all the files you wish to encrypt within the 'target' folder and the key within the 'keys' folder.")
         with open(f"./keys/{key_name}.key", "r") as file:
             key = int(file.read())
@@ -26,7 +31,8 @@ class REP:
             with open(f"./target/{filename}.encrypted", "wb+") as f:
                 f.write(encrypted_data)
 
-    def decrypt_key(self, key_name):
+    def decrypt_key(self):
+        key_name = input("Enter the name of the key: ")
         print("Place all the files you wish to decrypt within the 'target' folder and the key within the 'keys' folder.")
         with open(f"./keys/{key_name}.key", "r") as file:
             key = int(file.read())
@@ -42,16 +48,18 @@ class REP:
 
 if __name__ == "__main__":
     rep_instance = REP()
-    mode = sys.argv[1]
+    
+    print("Choose an option:")
+    print("1. Create New Key")
+    print("2. Encrypt")
+    print("3. Decrypt")
+    choice = int(input("Enter your choice: "))
 
-    if mode == "newkey":
-        key_name = sys.argv[2]
-        rep_instance.create_new_key(key_name)
-    elif mode == "encrypt":
-        key_name = sys.argv[2]
-        rep_instance.encrypt_key(key_name)
-    elif mode == "decrypt":
-        key_name = sys.argv[2]
-        rep_instance.decrypt_key(key_name)
+    if choice == 1:
+        rep_instance.create_new_key()
+    elif choice == 2:
+        rep_instance.encrypt_key()
+    elif choice == 3:
+        rep_instance.decrypt_key()
     else:
-        print("Invalid mode. Please use 'newkey', 'encrypt', or 'decrypt'.")
+        print("Invalid choice.")
