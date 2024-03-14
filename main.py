@@ -18,8 +18,8 @@ class REP:
             file.write(new_key)
 
     def encrypt_key(self):
-        key_name = input("Enter the name of the key: ")
         print("Place all the files you wish to encrypt within the 'target' folder and the key within the 'keys' folder.")
+        key_name = input("Enter the name of the key: ")
         with open(f"./keys/{key_name}.key", "r") as file:
             key = int(file.read())
         
@@ -32,8 +32,8 @@ class REP:
                 f.write(encrypted_data)
 
     def decrypt_key(self):
-        key_name = input("Enter the name of the key: ")
         print("Place all the files you wish to decrypt within the 'target' folder and the key within the 'keys' folder.")
+        key_name = input("Enter the name of the key: ")
         with open(f"./keys/{key_name}.key", "r") as file:
             key = int(file.read())
         
